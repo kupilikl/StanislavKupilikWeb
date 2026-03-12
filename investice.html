@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investice | Stanislav Kupilík</title>
+  <meta name="description" content="Investiční kalkulačka – orientační výpočet budoucí hodnoty investice. Výsledek po zanechání kontaktu." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Stanislav Kupilík</div>
+
+      <button class="hamburger" id="hamburger" aria-label="Otevřít menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#domu">Domů</a>
+        <a href="hypoteka.html">Hypotéky</a>
+        <a href="investice.html">Investice</a>
+        <a href="zivotni-pojisteni.html">Životko</a>
+        <a href="#kontakt">Kontakt</a>
+        <button id="darkToggle" aria-label="Přepnout tmavý režim">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-bg fade-in" id="top">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Investice</h1>
+      <p>Investiční kalkulačka – výsledek vám pošlu i s tipy, jak ho vylepšit.</p>
+
+      <div class="hero-buttons">
+        <a href="#kalkulacka" class="btn primary">Spočítat</a>
+        <a href="#kontakt" class="btn secondary">Konzultace zdarma</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- KALKULAČKA -->
+  <section id="kalkulacka" class="section fade-in">
+    <h2>Investiční kalkulačka</h2>
+    <p class="muted">Orientační výpočet budoucí hodnoty. Zhodnocení je průměrné roční, vklady měsíční.</p>
+
+    <form id="investCalc" class="calc">
+      <div class="calc-grid">
+        <div class="form-group">
+          <label for="inv_initial">Počáteční vklad (Kč)</label>
+          <input id="inv_initial" type="text" inputmode="numeric" value="100000" required />
+        </div>
+
+        <div class="form-group">
+          <label for="inv_monthly">Měsíční vklad (Kč)</label>
+          <input id="inv_monthly" type="text" inputmode="numeric" value="3000" required />
+        </div>
+
+        <div class="form-group">
+          <label for="inv_rate">Zhodnocení p.a. (%)</label>
+          <input id="inv_rate" type="number" step="0.01" value="7.00" required />
+        </div>
+
+        <div class="form-group">
+          <label for="inv_years">Doba investice (roky)</label>
+          <input id="inv_years" type="number" min="1" max="60" value="20" required />
+        </div>
+
+        <div class="form-group full-width">
+          <label for="inv_fee">Náklady / poplatky p.a. (%) <span class="hint">(volitelné)</span></label>
+          <input id="inv_fee" type="number" step="0.01" value="0.80" />
+        </div>
+      </div>
+
+      <div class="calc-actions">
+        <button type="submit" class="btn primary">Spočítat</button>
+        <button type="button" id="invReset" class="btn secondary">Reset</button>
+      </div>
+    </form>
+
+    <!-- Gate -->
+    <div class="calc-gate" id="invGate">
+      <h3>Zobrazit výsledek</h3>
+      <p class="muted">Pošlu vám výsledek + tipy, jak ho vylepšit.</p>
+
+      <!-- Nahraď tvuj-kod -->
+      <form id="leadGateForm_invest" class="lead-form" action="https://formspree.io/f/tvuj-kod" method="POST">
+        <div class="calc-grid">
+          <div class="form-group">
+            <label for="iName">Jméno</label>
+            <input id="iName" name="name" type="text" required />
+          </div>
+
+          <div class="form-group">
+            <label for="iEmail">E-mail</label>
+            <input id="iEmail" name="email" type="email" required />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="iPhone">Telefon <span class="hint">(volitelné)</span></label>
+            <input id="iPhone" name="phone" type="tel" />
+          </div>
+
+          <!-- Hidden výsledky -->
+          <input type="hidden" name="inv_initial" id="i_h_initial" />
+          <input type="hidden" name="inv_monthly" id="i_h_monthly" />
+          <input type="hidden" name="inv_rate" id="i_h_rate" />
+          <input type="hidden" name="inv_years" id="i_h_years" />
+          <input type="hidden" name="inv_fee" id="i_h_fee" />
+          <input type="hidden" name="inv_fv" id="i_h_fv" />
+          <input type="hidden" name="inv_contrib" id="i_h_contrib" />
+          <input type="hidden" name="inv_gain" id="i_h_gain" />
+          <input type="hidden" name="inv_summary" id="i_h_summary" />
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="consent" value="yes" required />
+          Souhlasím se zpracováním osobních údajů za účelem kontaktování ohledně investic.
+          <a href="gdpr.html">Více</a>
+        </label>
+
+        <button type="submit" class="btn primary">Zobrazit výsledek a poslat e-mailem</button>
+        <div class="muted" id="iLeadStatus" style="margin-top:10px;"></div>
+      </form>
+    </div>
+
+    <!-- Výsledek -->
+    <div class="calc-result" id="investResult" aria-live="polite" style="display:none;">
+      <div class="calc-row">
+        <span class="calc-label">Budoucí hodnota</span>
+        <strong class="calc-value" id="i_out_fv">—</strong>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Celkem vloženo</span>
+        <strong class="calc-value" id="i_out_contrib">—</strong>
+      </div>
+      <div class="calc-row">
+        <span class="calc-label">Zisk</span>
+        <strong class="calc-value" id="i_out_gain">—</strong>
+      </div>
+      <div class="calc-note" id="iNote"></div>
+
+      <div id="iCTA" style="display:none; margin-top:14px;">
+        <div class="cta-box">
+          <h3 style="margin:0 0 6px;">Chcete z toho vytěžit víc?</h3>
+          <p class="muted" id="iCtaText" style="margin:0 0 12px;">Pošlu vám 3 návrhy, jak zlepšit poměr riziko/výnos.</p>
+          <div class="cta-actions">
+            <a href="index.html#kontakt" class="btn primary">Konzultace zdarma</a>
+            <a href="tel:+420601383910" class="btn secondary">Zavolat</a>
+            <a href="https://wa.me/420601383910" class="btn secondary" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="section fade-in">
+    <h2>Kontakt</h2>
+    <p>Napište nebo zavolejte – navrhnu strategii podle vašich cílů.</p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fas fa-phone" aria-hidden="true"></i>
+        <div class="contact-label">Telefon</div>
+        <a href="tel:+420601383910">+420 601 383 910</a>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        <div class="contact-label">E-mail</div>
+        <a href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">© 2026 Stanislav Kupilík – Investice</footer>
+  <script src="script.js"></script>
+</body>
+</html>
