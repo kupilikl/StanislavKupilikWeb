@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Povinné informace — Stanislav Kupilík</title>
+  <meta name="description" content="Povinné informace pro klienty v oblasti distribuce pojištění.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Stanislav <span>Kupilík</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#o-mne">O mně</a></li>
+        <li><a href="index.html#sluzby">Služby</a></li>
+        <li><a href="index.html#kalkulacky">Kalkulačky</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="index.html#kontakt" class="nav-cta">Konzultace zdarma</a></li>
+        <li><button class="dark-toggle" id="darkToggle" aria-label="Přepnout režim">🌙</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </nav>
+
+  <div class="calc-page-hero">
+    <h1>Povinné informace</h1>
+    <p>Informace pro klienty před sjednáním nebo změnou pojistné smlouvy.</p>
+  </div>
+
+  <div class="calc-container" style="margin-bottom:80px">
+    <div class="calc-card" style="text-align:left">
+
+      <h2 style="margin-bottom:12px">1) Identifikace</h2>
+      <p><strong>Jméno:</strong> Stanislav Kupilík</p>
+      <p style="color:var(--text-muted)"><strong style="color:var(--text)">Adresa / sídlo:</strong> DOPLŇTE</p>
+      <p style="color:var(--text-muted)"><strong style="color:var(--text)">IČO:</strong> DOPLŇTE</p>
+      <p><strong>Kontakt:</strong> <a href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a>, <a href="tel:+420601383910">+420 601 383 910</a></p>
+
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">2) Postavení a registrace</h2>
+      <ul style="color:var(--text-muted);padding-left:20px">
+        <li><strong style="color:var(--text)">Postavení:</strong> DOPLŇTE (např. vázaný zástupce)</li>
+        <li><strong style="color:var(--text)">Evidován v registru ČNB:</strong> ANO — DOPLŇTE odkaz</li>
+      </ul>
+
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">3) Rozsah oprávnění</h2>
+      <p style="color:var(--text-muted)">DOPLŇTE (např. zda zprostředkováváte životní i neživotní pojištění).</p>
+
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">4) Odměňování</h2>
+      <p style="color:var(--text-muted)">DOPLŇTE stručně, jak jste odměňován (např. provize od pojišťovny). Na vyžádání můžete sdělit konkrétní způsob odměny k danému produktu.</p>
+
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">5) Stížnosti a mimosoudní řešení</h2>
+      <ul style="color:var(--text-muted);padding-left:20px">
+        <li><strong style="color:var(--text)">Stížnosti:</strong> DOPLŇTE (e-mail/adresa)</li>
+        <li><strong style="color:var(--text)">Mimosoudní řešení:</strong> DOPLŇTE (finanční arbitr / ČOI)</li>
+      </ul>
+
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">6) Ochrana osobních údajů</h2>
+      <p style="color:var(--text-muted)">Informace o zpracování osobních údajů najdete na stránce <a href="GDPR.html">GDPR</a>.</p>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="index.html">Hlavní stránka</a>
+      <a href="GDPR.html">GDPR</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="informace-pro-investory.html">Pro investory</a>
+    </div>
+    <p>&copy; 2025 Stanislav Kupilík. Všechna práva vyhrazena.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
