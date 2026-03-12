@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stanislav Kupilík — Finanční poradce</title>
   <meta name="description" content="Nezávislý finanční poradce Stanislav Kupilík. Hypotéky, investice, pojištění. Konzultace zdarma.">
+  <meta property="og:title" content="Stanislav Kupilík — Finanční poradce">
+  <meta property="og:description" content="Nezávislý finanční poradce. Hypotéky, investice, pojištění. Konzultace zdarma.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -33,7 +40,9 @@
 
   <!-- HERO -->
   <section class="hero" id="domu">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <img src="img/hero-bg.png" alt="" class="hero-bg-img" loading="eager">
+    </div>
     <div class="hero-content fade-in">
       <h1>Vaše finance.<br><span class="gold">Vaše pravidla.</span></h1>
       <p>Pomáhám lidem budovat a chránit majetek. Bez zbytečných produktů, jen s&nbsp;tím, co opravdu potřebujete.</p>
@@ -79,22 +88,34 @@
       </div>
       <div class="bento-grid">
         <div class="bento-card large fade-in">
-          <div class="bento-icon"><i class="fas fa-home"></i></div>
-          <h3>Úvěrové poradenství</h3>
-          <p>Neplaťte zbytečně víc na hypotéce. Porovnám nabídky od všech bank a vyjednám pro vás ty nejlepší podmínky. Pomáhám s novými hypotékami i s refinancováním stávajících úvěrů.</p>
-          <a href="hypoteka.html" class="bento-link">Spočítat hypotéku <i class="fas fa-arrow-right"></i></a>
+          <img src="img/service-mortgage.png" alt="Pár přebírající klíče od nového bytu" class="bento-card-img" loading="lazy">
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-icon"><i class="fas fa-home"></i></div>
+            <h3>Úvěrové poradenství</h3>
+            <p>Neplaťte zbytečně víc na hypotéce. Porovnám nabídky od všech bank a vyjednám pro vás ty nejlepší podmínky. Pomáhám s novými hypotékami i s refinancováním stávajících úvěrů.</p>
+            <a href="hypoteka.html" class="bento-link">Spočítat hypotéku <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
         <div class="bento-card fade-in">
-          <div class="bento-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Správa majetku a investice</h3>
-          <p>Pomohu vám sestavit investiční strategii odpovídající vašim cílům a toleranci k riziku. Od konzervativních fondů po dynamické portfolio.</p>
-          <a href="investice.html" class="bento-link">Investiční kalkulačka <i class="fas fa-arrow-right"></i></a>
+          <img src="img/service-invest.png" alt="Podnikatel studující finanční data" class="bento-card-img" loading="lazy">
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Správa majetku a investice</h3>
+            <p>Pomohu vám sestavit investiční strategii odpovídající vašim cílům a toleranci k riziku. Od konzervativních fondů po dynamické portfolio.</p>
+            <a href="investice.html" class="bento-link">Investiční kalkulačka <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
         <div class="bento-card fade-in">
-          <div class="bento-icon"><i class="fas fa-umbrella"></i></div>
-          <h3>Zprostředkování pojištění</h3>
-          <p>Životní, úrazové i majetkové pojištění od více pojišťoven. Zajistím, aby vaše rodina i majetek byly chráněny za férovou cenu.</p>
-          <a href="zivotni-pojisteni.html" class="bento-link">Kalkulačka pojištění <i class="fas fa-arrow-right"></i></a>
+          <img src="img/service-insurance.png" alt="Šťastná rodina na procházce v parku" class="bento-card-img" loading="lazy">
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-icon"><i class="fas fa-umbrella"></i></div>
+            <h3>Zprostředkování pojištění</h3>
+            <p>Životní, úrazové i majetkové pojištění od více pojišťoven. Zajistím, aby vaše rodina i majetek byly chráněny za férovou cenu.</p>
+            <a href="zivotni-pojisteni.html" class="bento-link">Kalkulačka pojištění <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -136,19 +157,19 @@
       </div>
       <div class="calc-promo-grid">
         <div class="calc-promo-card fade-in">
-          <i class="fas fa-home"></i>
+          <img src="img/calc-hypoteka.png" alt="Model domu na zlatých mincích" class="calc-promo-img" loading="lazy">
           <h3>Hypoteční kalkulačka</h3>
           <p>Kolik budete platit měsíčně? Jaké úroky zaplatíte celkem?</p>
           <a href="hypoteka.html" class="calc-promo-link">Spočítat <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="calc-promo-card fade-in">
-          <i class="fas fa-chart-line"></i>
+          <img src="img/calc-investice.png" alt="Sklenice s mincemi a rostoucí rostlinkou" class="calc-promo-img" loading="lazy">
           <h3>Investiční kalkulačka</h3>
           <p>Kolik vám přinese pravidelné investování za 10, 20 nebo 30 let?</p>
           <a href="investice.html" class="calc-promo-link">Spočítat <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="calc-promo-card fade-in">
-          <i class="fas fa-umbrella"></i>
+          <img src="img/calc-pojisteni.png" alt="Figurky rodiny pod ochranným zvonem" class="calc-promo-img" loading="lazy">
           <h3>Kalkulačka pojištění</h3>
           <p>Jakou pojistnou částku skutečně potřebujete pro zajištění rodiny?</p>
           <a href="zivotni-pojisteni.html" class="calc-promo-link">Spočítat <i class="fas fa-arrow-right"></i></a>
@@ -169,7 +190,7 @@
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="testimonial-text">Díky Standovi jsme získali hypotéku s úrokem o 0,4 % nižším, než nám nabídla naše banka. Za dobu splácení ušetříme přes 200 tisíc.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">MK</div>
+          <img src="img/avatar-martin.png" alt="Martin K." class="testimonial-avatar" loading="lazy">
           <div>
             <div class="testimonial-name">Martin K.</div>
             <div class="testimonial-role">Hypotéka na bydlení</div>
@@ -180,7 +201,7 @@
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="testimonial-text">Konečně někdo, kdo mi vysvětlil investování srozumitelně. Žádné složité termíny, jasný plán a výsledky, které vidím každý měsíc.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">LP</div>
+          <img src="img/avatar-lucie.png" alt="Lucie P." class="testimonial-avatar" loading="lazy">
           <div>
             <div class="testimonial-name">Lucie P.</div>
             <div class="testimonial-role">Investiční portfolio</div>
@@ -191,7 +212,7 @@
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p class="testimonial-text">Po narození dcery jsem potřeboval zajistit rodinu. Standa mi navrhl pojištění, které pokrývá vše důležité a stojí méně, než jsem platil předtím.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">TH</div>
+          <img src="img/avatar-tomas.png" alt="Tomáš H." class="testimonial-avatar" loading="lazy">
           <div>
             <div class="testimonial-name">Tomáš H.</div>
             <div class="testimonial-role">Životní pojištění</div>
