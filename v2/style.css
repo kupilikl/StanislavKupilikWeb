@@ -96,7 +96,20 @@ body.light .nav {
   font-size: 0.9rem;
   font-weight: 500;
   transition: color var(--transition);
+  position: relative;
 }
+.nav-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: width var(--transition);
+}
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta {
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
@@ -280,6 +293,10 @@ body.light .trust-bar {
 .trust-item i {
   color: var(--gold);
   font-size: 1.1rem;
+  transition: transform var(--transition);
+}
+.trust-item:hover i {
+  transform: scale(1.2);
 }
 .trust-item strong {
   color: var(--text);
@@ -424,7 +441,7 @@ body.light .bento-card-content {
   opacity: 0;
   transition: opacity var(--transition);
 }
-.bento-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+.bento-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.2), 0 0 0 1px rgba(212,168,67,0.2); border-color: rgba(212,168,67,0.25); }
 .bento-card:hover::before { opacity: 1; }
 .bento-card.large { grid-column: 1 / -1; }
 .bento-icon {
@@ -484,6 +501,11 @@ body.light .bento-card-content {
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.step:hover .step-num {
+  transform: scale(1.12);
+  box-shadow: 0 6px 20px rgba(212,168,67,0.35);
 }
 .step h3 {
   font-size: 1.15rem;
@@ -509,7 +531,7 @@ body.light .bento-card-content {
   text-align: center;
   transition: transform var(--transition), box-shadow var(--transition);
 }
-.calc-promo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+.calc-promo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.2), 0 0 0 1px rgba(212,168,67,0.2); border-color: rgba(212,168,67,0.25); }
 .calc-promo-img {
   width: 100%;
   max-height: 180px;
@@ -553,6 +575,11 @@ body.light .bento-card-content {
   border-left: 3px solid var(--gold);
   border-radius: var(--radius);
   padding: 32px 28px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.15), 0 0 0 1px rgba(212,168,67,0.15);
 }
 .testimonial-stars {
   color: var(--gold);
@@ -615,14 +642,16 @@ img.testimonial-avatar {
   border-radius: var(--radius);
   padding: 28px 24px;
   text-align: center;
-  transition: transform var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
-.cert-card:hover { transform: translateY(-2px); }
+.cert-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.12), 0 0 0 1px rgba(212,168,67,0.15); border-color: rgba(212,168,67,0.2); }
 .cert-card i {
   font-size: 2rem;
   color: var(--gold);
   margin-bottom: 12px;
+  transition: transform var(--transition);
 }
+.cert-card:hover i { transform: scale(1.15); }
 .cert-card h4 {
   font-size: 1rem;
   margin-bottom: 6px;
@@ -746,6 +775,7 @@ img.testimonial-avatar {
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,168,67,0.12);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
 .form-submit {
@@ -851,6 +881,11 @@ body.light .footer {
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+/* Staggered fade-in for grid children */
+.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.fade-in:nth-child(5) { transition-delay: 0.4s; }
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
