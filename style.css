@@ -9,7 +9,7 @@
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: no-preference){ html{ scroll-behavior:smooth; } }
 
 body{
   margin:0;
@@ -115,7 +115,7 @@ nav{
   text-align:center;
   color:#fff;
 
-  background-image:url("Stanislav.jpeg");
+  background-image:url("stanislav-kupilik.jpg");
   background-size:contain;          /* celá postava */
   background-position:center bottom;/* postava dole */
   background-repeat:no-repeat;
@@ -418,4 +418,100 @@ body.dark .calc-result,
 body.dark .calc-gate,
 body.dark .cta-box{
   box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* Dark mode – form inputs */
+body.dark .form-group input,
+body.dark .form-group textarea{
+  background:var(--surface);
+  color:var(--text);
+  border-color:#475569;
+}
+
+/* Validation */
+.form-group input:invalid:not(:placeholder-shown){ border-color:#ef4444; }
+button:disabled{ opacity:0.6; cursor:not-allowed; }
+
+/* Print */
+@media print{
+  nav,.hamburger,#darkToggle,.footer,.hero-bg,.floating-cta{ display:none !important; }
+  body{ padding-top:0; background:#fff; color:#000; }
+  .card{ box-shadow:none; border:1px solid #ccc; break-inside:avoid; }
+}
+
+/* Result highlight */
+.calc-result .calc-row:first-child .calc-value{
+  font-size:1.6rem;
+  color:var(--primary);
+}
+
+/* Touch targets */
+.btn{ min-height:44px; }
+.hamburger{ min-height:44px; min-width:44px; }
+.nav-links a{ min-height:44px; display:inline-flex; align-items:center; }
+
+/* About grid */
+.about-grid{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:32px;
+  text-align:left;
+  align-items:center;
+}
+.about-grid img{
+  width:100%;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(15,23,42,.12);
+}
+@media (max-width:768px){
+  .about-grid{ grid-template-columns:1fr; text-align:center; }
+  .about-grid img{ max-width:280px; margin:0 auto; }
+}
+
+/* Testimonials */
+.testimonial-stars{ color:#f59e0b; margin-bottom:8px; }
+.testimonial-quote{
+  font-style:italic;
+  position:relative;
+  padding-left:20px;
+}
+.testimonial-quote::before{
+  content:"\201E";
+  position:absolute;
+  left:0;
+  top:-4px;
+  font-size:2rem;
+  color:var(--primary);
+  line-height:1;
+}
+.testimonial-author{ margin-top:12px; }
+.testimonial-author strong{ display:block; }
+.testimonial-author span{ font-size:.9rem; color:var(--muted); }
+
+/* Floating CTA */
+.floating-cta{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:900;
+  opacity:0;
+  transform:translateY(20px);
+  pointer-events:none;
+  transition:opacity .3s ease, transform .3s ease;
+  box-shadow:0 8px 24px rgba(15,23,42,.2);
+}
+.floating-cta.visible{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+@media (max-width:768px){
+  .floating-cta{ bottom:16px; right:16px; font-size:.9rem; padding:10px 14px; }
+}
+
+/* Certifications */
+.cert-icon{
+  font-size:2rem;
+  color:var(--primary);
+  margin-bottom:8px;
 }
