@@ -50,14 +50,17 @@
           <div class="form-group">
             <label for="life_debts">Celkové závazky / dluhy (Kč)</label>
             <input type="text" id="life_debts" inputmode="numeric" value="2 500 000" required>
+            <div class="range-wrap"><input type="range" min="0" max="10000000" step="100000" value="2500000" data-sync="life_debts"></div>
           </div>
           <div class="form-group">
             <label for="life_income">Čistý měsíční příjem (Kč)</label>
             <input type="text" id="life_income" inputmode="numeric" value="35 000" required>
+            <div class="range-wrap"><input type="range" min="10000" max="200000" step="1000" value="35000" data-sync="life_income"></div>
           </div>
           <div class="form-group">
             <label for="life_years">Roky do soběstačnosti rodiny</label>
             <input type="number" id="life_years" min="1" max="40" value="10" required>
+            <div class="range-wrap"><input type="range" min="1" max="30" step="1" value="10" data-sync="life_years"></div>
           </div>
           <div class="form-group">
             <label for="life_savings">Úspory / záchranná síť (Kč)</label>
@@ -112,23 +115,43 @@
       </div>
 
       <!-- RESULT -->
-      <div class="calc-result" id="lifeResult">
+      <div class="calc-result" id="lifeResult" style="display:none">
         <h3>Doporučená pojistná částka</h3>
-        <div class="calc-row">
+        <div class="calc-summary-cards" id="lifeSummaryCards"></div>
+        <div class="calc-row calc-row-fallback">
           <span>Doporučené krytí</span>
           <span id="l_out_rec">—</span>
         </div>
+        <div class="calc-breakdown" id="lifeBreakdown"></div>
         <p class="calc-note" id="lNote">Výpočet je orientační. Skutečná výše pojistky závisí na detailní analýze vaší situace.</p>
       </div>
 
+      <!-- CHARTS -->
+      <div class="calc-charts" id="lifeCharts">
+        <div class="chart-grid">
+          <div class="chart-box">
+            <h4>Skladba pojistné částky</h4>
+            <div class="chart-canvas-wrap doughnut">
+              <canvas id="lifeDoughnut"></canvas>
+            </div>
+          </div>
+          <div class="chart-box">
+            <h4>Potřeby vs. úspory</h4>
+            <div class="chart-canvas-wrap">
+              <canvas id="lifeBar"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- CTA -->
-      <div class="calc-cta-box" id="lCTA">
+      <div class="calc-cta-box" id="lCTA" style="display:none">
         <h4>Chcete pojištění na míru?</h4>
         <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px">Pomohu vám najít optimální pojištění za férovou cenu.</p>
         <div class="cta-links">
           <a href="index.html#kontakt"><i class="fas fa-envelope"></i> Napsat</a>
-          <a href="tel:+420XXXXXXXXX"><i class="fas fa-phone"></i> Zavolat</a>
-          <a href="https://wa.me/420XXXXXXXXX"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="tel:+420601383910"><i class="fas fa-phone"></i> Zavolat</a>
+          <a href="https://wa.me/420601383910"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
       </div>
 
@@ -146,7 +169,9 @@
     <p>&copy; 2025 Stanislav Kupilík. Všechna práva vyhrazena.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="../script.js"></script>
   <script src="script.js"></script>
+  <script src="charts.js"></script>
 </body>
 </html>

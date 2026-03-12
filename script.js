@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Utility functions =====
   const czk = (n) =>
     new Intl.NumberFormat("cs-CZ", { style: "currency", currency: "CZK", maximumFractionDigits: 0 }).format(n);
+  window.czk = czk;
 
   const parseNum = (el) =>
     parseFloat(String(el.value || "0").replace(/\s/g, "").replace(",", ".")) || 0;
@@ -238,6 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showEl("mortgageResult");
       showEl("mCTA");
       document.getElementById("mortgageResult").scrollIntoView({ behavior: scrollBehavior(), block: "center" });
+      document.dispatchEvent(new CustomEvent('calcResult', { detail: { type: 'mortgage', data: mData } }));
     };
 
     if (gateForm) {
@@ -264,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hideEl("mortgageResult");
         hideEl("mCTA");
         formatNumericInputs(mortgageForm);
+        document.dispatchEvent(new CustomEvent('calcReset', { detail: { type: 'mortgage' } }));
       });
     }
   }
@@ -310,6 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showEl("investResult");
       showEl("iCTA");
       document.getElementById("investResult").scrollIntoView({ behavior: scrollBehavior(), block: "center" });
+      document.dispatchEvent(new CustomEvent('calcResult', { detail: { type: 'invest', data: iData } }));
     };
 
     if (gateForm) {
@@ -337,6 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hideEl("investResult");
         hideEl("iCTA");
         formatNumericInputs(investForm);
+        document.dispatchEvent(new CustomEvent('calcReset', { detail: { type: 'invest' } }));
       });
     }
   }
@@ -375,6 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showEl("lifeResult");
       showEl("lCTA");
       document.getElementById("lifeResult").scrollIntoView({ behavior: scrollBehavior(), block: "center" });
+      document.dispatchEvent(new CustomEvent('calcResult', { detail: { type: 'life', data: lData } }));
     };
 
     if (gateForm) {
@@ -401,6 +407,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hideEl("lifeResult");
         hideEl("lCTA");
         formatNumericInputs(lifeForm);
+        document.dispatchEvent(new CustomEvent('calcReset', { detail: { type: 'life' } }));
       });
     }
   }
