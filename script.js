@@ -412,6 +412,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // ===== Cookie consent + Microsoft Clarity =====
+  const CONSENT_KEY = "cookie_consent";
+  const CLARITY_ID = "vvc1tbvczq";
+
+  const loadClarity = () => {
+    if (document.querySelector('script[data-clarity]')) return;
+    const s = document.createElement("script");
+    s.async = true;
+    s.setAttribute("data-clarity", "");
+    s.src = "https://www.clarity.ms/tag/" + CLARITY_ID;
+    document.head.appendChild(s);
+    window.clarity = window.clarity || function () {
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+  };
+
+  const consent = localStorage.getItem(CONSENT_KEY);
+
+  if (consent === "accepted") {
+    loadClarity();
+  }
+
+  if (!consent) {
+    const overlay = document.createElement("div");
+    overlay.className = "cookie-overlay";
+    const banner = document.createElement("div");
+    banner.className = "cookie-banner";
+    banner.innerHTML =
+      '<p>Tento web používá analytické cookies pro zlepšení uživatelského zážitku. ' +
+      'Více v <a href="cookies.html">zásadách cookies</a>.</p>' +
+      '<div class="cookie-btns">' +
+        '<button class="cookie-btn cookie-btn--accept">Přijmout</button>' +
+        '<button class="cookie-btn cookie-btn--reject">Odmítnout</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      overlay.classList.add("visible");
+      banner.classList.add("visible");
+    }));
+
+    const dismiss = () => {
+      overlay.classList.remove("visible");
+      banner.classList.remove("visible");
+      setTimeout(() => { overlay.remove(); banner.remove(); }, 300);
+    };
+
+    banner.querySelector(".cookie-btn--accept").addEventListener("click", () => {
+      localStorage.setItem(CONSENT_KEY, "accepted");
+      dismiss();
+      loadClarity();
+    });
+
+    banner.querySelector(".cookie-btn--reject").addEventListener("click", () => {
+      localStorage.setItem(CONSENT_KEY, "rejected");
+      dismiss();
+    });
+  }
+
   // ===== Floating CTA =====
   const floatingCta = $("#floatingCta");
   if (floatingCta) {

@@ -1,92 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rezervace schůzky | Stanislav Kupilík</title>
-  <meta name="description" content="Rezervujte si schůzku – vyberte volný termín v kalendáři." />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rezervace konzultace — Stanislav Kupilík</title>
+  <meta name="description" content="Zarezervujte si termín konzultace s finančním poradcem Stanislavem Kupilíkem.">
+  <meta property="og:title" content="Rezervace konzultace — Stanislav Kupilík">
+  <meta property="og:description" content="Zarezervujte si termín konzultace s finančním poradcem.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
-  <!-- NAV (stejná struktura jako na indexu / investicích) -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Stanislav Kupilík</div>
-
-      <button class="hamburger" id="hamburger" aria-label="Otevřít menu">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Stanislav <span>Kupilík</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#o-mne">O mně</a></li>
+        <li><a href="index.html#sluzby">Služby</a></li>
+        <li><a href="index.html#kalkulacky">Kalkulačky</a></li>
+        <li><a href="index.html#reference">Reference</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="index.html#kontakt" class="nav-cta">Konzultace zdarma</a></li>
+        <li><button class="dark-toggle" id="darkToggle" aria-label="Přepnout režim">🌙</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
       </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="index.html#domu">Domů</a>
-        <a href="hypoteka.html">Hypotéky</a>
-        <a href="investice.html">Investice</a>
-        <a href="zivotni-pojisteni.html">Životko</a>
-        <a href="rezervace.html">Rezervace</a>
-        <a href="index.html#kontakt">Kontakt</a>
-        <button id="darkToggle" aria-label="Přepnout tmavý režim">🌙</button>
-      </div>
     </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
-  <!-- HERO (může být i bez fotky; držíme jednotný styl) -->
-  <header class="hero-bg fade-in" id="top">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Rezervace schůzky</h1>
-      <p>Vyberte si volný termín. Potvrzení vám přijde e‑mailem.</p>
-      <div class="hero-buttons">
-        <a href="#rezervace" class="btn primary">Vybrat termín</a>
-        <a href="index.html#kontakt" class="btn secondary">Napsat dotaz</a>
+  <!-- HERO -->
+  <div class="calc-page-hero">
+    <h1><i class="fas fa-calendar-check" style="color:var(--gold)"></i> Rezervace konzultace</h1>
+    <p>Vyberte si termín, který vám vyhovuje. Úvodní konzultace je zdarma.</p>
+  </div>
+
+  <!-- BOOKING -->
+  <div class="calc-container" style="margin-bottom:80px">
+    <div class="calc-card" style="text-align:center">
+      <p style="color:var(--text-muted);margin-bottom:24px">Vyberte si volný termín v kalendáři níže, nebo mě kontaktujte přímo:</p>
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:32px">
+        <a href="tel:+420601383910" class="calc-btn" style="width:auto;display:inline-flex;align-items:center;gap:8px;padding:12px 28px;text-decoration:none">
+          <i class="fas fa-phone"></i> Zavolat
+        </a>
+        <a href="https://wa.me/420601383910" class="calc-btn" style="width:auto;display:inline-flex;align-items:center;gap:8px;padding:12px 28px;text-decoration:none;background:linear-gradient(135deg,#25D366,#128C7E)">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+
+      <!-- Booking embed placeholder -->
+      <div style="position:relative;width:100%;min-height:800px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--glass-border)">
+        <iframe
+          src="TVUJ_BOOKINGS_LINK"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
+          loading="lazy"
+          title="Rezervační kalendář"
+        ></iframe>
+        <noscript>
+          <p style="padding:40px;text-align:center;color:var(--text-muted)">
+            Pro zobrazení kalendáře je nutný JavaScript.<br>
+            <a href="TVUJ_BOOKINGS_LINK" target="_blank">Otevřít kalendář v novém okně</a>
+          </p>
+        </noscript>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- OBSAH -->
-  <section id="rezervace" class="section fade-in">
-    <h2>Zde si rezervujte schůzku</h2>
-    <p class="muted">
-      Kalendář níže zobrazuje dostupné termíny. Vyberte službu/typ schůzky a čas, který vám vyhovuje.
-    </p>
-
-    <!-- Fallback tlačítko (kdyby iframe nebylo možné načíst) -->
-    <div class="center" style="margin:14px 0 18px;">
-      <a class="btn primary" href="TVŮJ_BOOKINGS_LINK" target="_blank" rel="noopener">
-        Otevřít rezervace v nové záložce
-      </a>
-    </div>
-
-    <!-- Embed: responsive iframe -->
-    <div style="position:relative; width:100%; padding-top:1200px;">
-      <iframe
-        src="TVŮJ_BOOKINGS_LINK"
-        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-        loading="lazy"
-      ></iframe>
-    </div>
-
-    <p class="muted" style="margin-top:12px;">
-      Pokud se kalendář nezobrazuje, použijte tlačítko „Otevřít rezervace“ výše.
-    </p>
-  </section>
-
+  <!-- FOOTER -->
   <footer class="footer">
-    © 2026 Stanislav Kupilík •
-    <a href="gdpr.html">GDPR</a> •
-    <a href="cookies.html">Cookies</a> •
-    <a href="povinne-informace.html">Povinné informace</a> •
-    <a href="informace-pro-investory.html">Informace pro investory</a>
+    <div class="footer-links">
+      <a href="index.html">Hlavní stránka</a>
+      <a href="povinne-informace.html">Povinné informace</a>
+      <a href="GDPR.html">Ochrana osobních údajů</a>
+    </div>
+    <p>&copy; 2025 Stanislav Kupilík. Všechna práva vyhrazena.</p>
   </footer>
 
-  <a href="rezervace.html" class="floating-cta btn primary" id="floatingCta">
-    <i class="fas fa-calendar-check" aria-hidden="true"></i> Konzultace zdarma
-  </a>
-
   <script src="script.js"></script>
+  <script src="script-v2.js"></script>
 </body>
 </html>

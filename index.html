@@ -1,365 +1,381 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stanislav Kupilík | Finanční poradce</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Stanislav Kupilík – finanční poradce. Hypotéky, investice, pojištění, strategie a dlouhodobá správa majetku." />
-  <meta name="keywords" content="finanční poradce, hypotéka, investice, pojištění, refinancování, majetek, finance" />
-  <meta name="author" content="Stanislav Kupilík" />
-
-  <!-- OpenGraph -->
-  <meta property="og:title" content="Stanislav Kupilík – Finanční poradce" />
-  <meta property="og:description" content="Pomáhám lidem budovat a chránit majetek. Hypotéky, investice, pojištění, strategie." />
-  <meta property="og:image" content="https://tvoje-domena.cz/img/stanislav-og.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tvoje-domena.cz" />
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "Stanislav Kupilík – Finanční poradce",
-    "url": "https://tvoje-domena.cz",
-    "telephone": "+420601383910",
-    "email": "stanislav.kupilik@edofinance.cz",
-    "address": { "@type": "PostalAddress", "addressCountry": "CZ" },
-    "sameAs": ["https://www.linkedin.com/in/stanislav-kupilik-918690198/"]
-  }
-  </script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stanislav Kupilík — Finanční poradce</title>
+  <meta name="description" content="Nezávislý finanční poradce Stanislav Kupilík. Hypotéky, investice, pojištění. Konzultace zdarma.">
+  <meta property="og:title" content="Stanislav Kupilík — Finanční poradce">
+  <meta property="og:description" content="Nezávislý finanční poradce. Hypotéky, investice, pojištění. Konzultace zdarma.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
   <!-- NAV -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Stanislav Kupilík</div>
-
-      <button class="hamburger" id="hamburger" aria-label="Otevřít menu">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#domu" class="nav-logo">Stanislav <span>Kupilík</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#o-mne">O mně</a></li>
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#kalkulacky">Kalkulačky</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#kontakt" class="nav-cta">Konzultace zdarma</a></li>
+        <li><button class="dark-toggle" id="darkToggle" aria-label="Přepnout režim">🌙</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
       </button>
-
-      <!-- ✅ doplněné nové záložky + krátké názvy -->
-      <div class="nav-links" id="navLinks">
-        <a href="#domu">Domů</a>
-        <a href="#o-mne">O mně</a>
-        <a href="#sluzby">Služby</a>
-
-        <a href="hypoteka.html">Hypotéky</a>
-        <a href="investice.html">Investice</a>
-        <a href="zivotni-pojisteni.html">Životko</a>
-        <a href="rezervace.html">Rezervace</a>
-
-        <a href="#zkusenosti">Praxe</a>
-        <a href="#reference">Recenze</a>
-        <a href="#faq">FAQ</a>
-        <a href="#timeline">Cesta</a>
-        <a href="#blog">Blog</a>
-        <a href="#kontakt">Kontakt</a>
-
-        <a href="povinne-informace.html">Povinné</a>
-        <a href="informace-pro-investory.html">Investoři</a>
-        <a href="gdpr.html">GDPR</a>
-        <a href="cookies.html">Cookies</a>
-
-        <button id="darkToggle" aria-label="Přepnout tmavý režim">🌙</button>
-      </div>
     </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
   <!-- HERO -->
-  <header id="domu" class="hero-bg fade-in">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Stanislav Kupilík</h1>
-      <p>Finanční poradce • Strategie • Investice • Úvěry</p>
-
-      <div class="hero-buttons">
-        <a href="rezervace.html" class="btn primary">Konzultace zdarma</a>
-        <a href="#sluzby" class="btn secondary">Moje služby</a>
-      </div>
+  <section class="hero" id="domu">
+    <div class="hero-bg">
+      <img src="img/hero-bg-2.png" alt="" class="hero-bg-img" loading="eager">
     </div>
-  </header>
+    <div class="hero-content fade-in">
+      <h1>Vaše finance.<br><span class="gold">Vaše pravidla.</span></h1>
+      <p>Pomáhám lidem budovat a chránit majetek. Bez zbytečných produktů, jen s&nbsp;tím, co opravdu potřebujete.</p>
+      <a href="#kontakt" class="hero-cta">Nezávazná konzultace zdarma <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item"><i class="fas fa-users"></i> <strong>250+</strong> spokojených klientů</div>
+      <div class="trust-item"><i class="fas fa-coins"></i> <strong>50 mil. Kč</strong> sjednaných úvěrů</div>
+      <div class="trust-item"><i class="fas fa-briefcase"></i> <strong>8 let</strong> praxe</div>
+      <div class="trust-item"><i class="fas fa-shield-halved"></i> Registrace <strong>ČNB</strong></div>
+    </div>
+  </div>
 
   <!-- O MNĚ -->
-  <section class="section fade-in" id="o-mne">
-    <h2>O mně</h2>
-    <div class="about-grid">
-      <img src="stanislav-kupilik.jpg" alt="Stanislav Kupilík – finanční poradce" loading="lazy" />
-      <div>
-        <p>V oblasti financí se pohybuji už 8 let a za tu dobu jsem pochopil jednu zásadní věc: lidé nepotřebují další produkt, ale partnera, který jim pomůže budovat a chránit jejich finanční majetek.</p>
-        <p>Nesoustředím se na prodej. Stavím na dlouhodobé strategii, která vás i vaši rodinu ochrání před nepředvídatelnými riziky a zároveň podpoří růst vašeho majetku.</p>
-        <p>Zakládám si na transparentnosti, hledání možností v bankovních metodikách a individuálním přístupu.</p>
+  <section class="section" id="o-mne">
+    <div class="about-grid fade-in">
+      <div class="about-photo">
+        <img src="img/portret.jpg" alt="Stanislav Kupilík" loading="lazy">
+      </div>
+      <div class="about-text">
+        <p class="section-sub" style="margin-bottom:8px">Kdo jsem</p>
+        <h2 class="section-title">Stanislav <span class="gold">Kupilík</span></h2>
+        <p>Jsem nezávislý finanční poradce s registrací ČNB. Specializuji se na úvěrové poradenství, správu majetku a zprostředkování pojištění.</p>
+        <p>Pracuji pod hlavičkou edofinance, což mi umožňuje nabízet produkty od širokého spektra bank a pojišťoven — vždy volím to, co je nejlepší pro klienta, ne pro poskytovatele.</p>
+        <p>Věřím, že finanční poradenství má být srozumitelné, transparentní a bez zbytečného tlaku.</p>
+        <blockquote class="about-quote">„Nejlepší investice je ta, které rozumíte."</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLUŽBY (Bento) -->
+  <div class="section-alt">
+    <section class="section" id="sluzby">
+      <div class="section-center fade-in">
+        <p class="section-sub" style="margin-bottom:8px">Co pro vás mohu udělat</p>
+        <h2 class="section-title">Služby na <span class="gold">míru</span></h2>
+        <p class="section-sub">Každá finanční situace je unikátní. Proto přistupuji ke&nbsp;každému klientovi individuálně.</p>
+      </div>
+      <div class="bento-grid">
+        <div class="bento-card large fade-in">
+          <picture>
+            <source srcset="img/service-mortgage.webp" type="image/webp">
+            <img src="img/service-mortgage.jpg" alt="Pár přebírající klíče od nového bytu" class="bento-card-img" style="object-position:70% center" loading="lazy">
+          </picture>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-icon"><i class="fas fa-home"></i></div>
+            <h3>Úvěrové poradenství</h3>
+            <p>Neplaťte zbytečně víc na hypotéce. Porovnám nabídky od všech bank a vyjednám pro vás ty nejlepší podmínky. Pomáhám s novými hypotékami i s refinancováním stávajících úvěrů.</p>
+            <a href="hypoteka.html" class="bento-link">Spočítat hypotéku <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="bento-card fade-in">
+          <picture>
+            <source srcset="img/service-invest.webp" type="image/webp">
+            <img src="img/service-invest.jpg" alt="Podnikatel studující finanční data" class="bento-card-img" style="object-position:center 40%" loading="lazy">
+          </picture>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Správa majetku a investice</h3>
+            <p>Pomohu vám sestavit investiční strategii odpovídající vašim cílům a toleranci k riziku. Od konzervativních fondů po dynamické portfolio.</p>
+            <a href="investice.html" class="bento-link">Investiční kalkulačka <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="bento-card fade-in">
+          <picture>
+            <source srcset="img/service-insurance.webp" type="image/webp">
+            <img src="img/service-insurance.jpg" alt="Šťastná rodina na procházce v parku" class="bento-card-img" style="object-position:center 30%" loading="lazy">
+          </picture>
+          <div class="bento-card-overlay"></div>
+          <div class="bento-card-content">
+            <div class="bento-icon"><i class="fas fa-umbrella"></i></div>
+            <h3>Zprostředkování pojištění</h3>
+            <p>Životní, úrazové i majetkové pojištění od více pojišťoven. Zajistím, aby vaše rodina i majetek byly chráněny za férovou cenu.</p>
+            <a href="zivotni-pojisteni.html" class="bento-link">Kalkulačka pojištění <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JAK TO FUNGUJE -->
+  <section class="section">
+    <div class="section-center fade-in">
+      <p class="section-sub" style="margin-bottom:8px">Jednoduché jako 1-2-3</p>
+      <h2 class="section-title">Jak <span class="gold">spolupracujeme</span></h2>
+      <p class="section-sub">Od prvního kontaktu po hotové řešení — transparentně a bez závazků.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Nezávazná konzultace</h3>
+        <p>Probereme vaši situaci, cíle a možnosti. Úplně zdarma a bez závazků.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Návrh řešení</h3>
+        <p>Připravím porovnání produktů od různých poskytovatelů a doporučím nejlepší variantu.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>Realizace a péče</h3>
+        <p>Zařídím veškerou administrativu. Pravidelně kontroluji, zda řešení stále odpovídá vašim potřebám.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- KALKULAČKY PROMO -->
+  <div class="section-alt">
+    <section class="section" id="kalkulacky">
+      <div class="section-center fade-in">
+        <p class="section-sub" style="margin-bottom:8px">Online nástroje</p>
+        <h2 class="section-title">Finanční <span class="gold">kalkulačky</span></h2>
+        <p class="section-sub">Spočítejte si předběžně své možnosti. Přesné nabídky připravím na konzultaci.</p>
+      </div>
+      <div class="calc-promo-grid">
+        <div class="calc-promo-card fade-in">
+          <img src="img/calc-hypoteka.png" alt="Model domu na zlatých mincích" class="calc-promo-img" loading="lazy">
+          <h3>Hypoteční kalkulačka</h3>
+          <p>Kolik budete platit měsíčně? Jaké úroky zaplatíte celkem?</p>
+          <a href="hypoteka.html" class="calc-promo-link">Spočítat <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="calc-promo-card fade-in">
+          <img src="img/calc-investice.png" alt="Sklenice s mincemi a rostoucí rostlinkou" class="calc-promo-img" loading="lazy">
+          <h3>Investiční kalkulačka</h3>
+          <p>Kolik vám přinese pravidelné investování za 10, 20 nebo 30 let?</p>
+          <a href="investice.html" class="calc-promo-link">Spočítat <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="calc-promo-card fade-in">
+          <img src="img/calc-pojisteni.png" alt="Figurky rodiny pod ochranným zvonem" class="calc-promo-img" loading="lazy">
+          <h3>Kalkulačka pojištění</h3>
+          <p>Jakou pojistnou částku skutečně potřebujete pro zajištění rodiny?</p>
+          <a href="zivotni-pojisteni.html" class="calc-promo-link">Spočítat <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- REFERENCE -->
+  <section class="section" id="reference">
+    <div class="section-center fade-in">
+      <p class="section-sub" style="margin-bottom:8px">Co říkají klienti</p>
+      <h2 class="section-title">Důvěra, která se <span class="gold">vyplácí</span></h2>
+      <p class="section-sub">Více než 250 spokojených klientů, kteří doporučují mé služby dál.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Díky Standovi jsme získali hypotéku s úrokem o 0,4 % nižším, než nám nabídla naše banka. Za dobu splácení ušetříme přes 200 tisíc.</p>
+        <div class="testimonial-author">
+          <img src="img/avatar-martin.png" alt="Martin K." class="testimonial-avatar" loading="lazy">
+          <div>
+            <div class="testimonial-name">Martin K.</div>
+            <div class="testimonial-role">Hypotéka na bydlení</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Konečně někdo, kdo mi vysvětlil investování srozumitelně. Žádné složité termíny, jasný plán a výsledky, které vidím každý měsíc.</p>
+        <div class="testimonial-author">
+          <img src="img/avatar-lucie.png" alt="Lucie P." class="testimonial-avatar" loading="lazy">
+          <div>
+            <div class="testimonial-name">Lucie P.</div>
+            <div class="testimonial-role">Investiční portfolio</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Po narození dcery jsem potřeboval zajistit rodinu. Standa mi navrhl pojištění, které pokrývá vše důležité a stojí méně, než jsem platil předtím.</p>
+        <div class="testimonial-author">
+          <img src="img/avatar-tomas.png" alt="Tomáš H." class="testimonial-avatar" loading="lazy">
+          <div>
+            <div class="testimonial-name">Tomáš H.</div>
+            <div class="testimonial-role">Životní pojištění</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CERTIFIKACE -->
-  <section class="section fade-in" id="certifikace">
-    <h2>Certifikace a zázemí</h2>
-    <p>Pracuji transparentně a pod dohledem regulátora.</p>
-    <div class="cards-grid">
-      <div class="card">
-        <i class="fas fa-certificate cert-icon" aria-hidden="true"></i>
-        <h3>Registrace u ČNB</h3>
-        <p>Vázaný zástupce registrovaný u České národní banky.</p>
+  <div class="section-alt">
+    <section class="section" id="certifikace">
+      <div class="section-center fade-in">
+        <p class="section-sub" style="margin-bottom:8px">Profesní zázemí</p>
+        <h2 class="section-title">Certifikace a <span class="gold">záruky</span></h2>
       </div>
-      <div class="card">
-        <i class="fas fa-university cert-icon" aria-hidden="true"></i>
-        <h3>edofinance.cz</h3>
-        <p>Spolupráce s licencovanou společností edofinance pro zprostředkování finančních produktů.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-check-circle cert-icon" aria-hidden="true"></i>
-        <h3>Odborné zkoušky</h3>
-        <p>Splněné odborné zkoušky dle zákona o distribuci pojištění a úvěrů (IDD compliance).</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-briefcase cert-icon" aria-hidden="true"></i>
-        <h3>8 let praxe</h3>
-        <p>Od roku 2018 aktivně pomáhám klientům s financemi, úvěry a pojištěním.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SLUŽBY -->
-  <section class="section fade-in" id="sluzby">
-    <h2>Služby</h2>
-    <p>Poskytuji komplexní finanční poradenství s důrazem na individuální potřeby každého klienta.</p>
-
-    <div class="cards-grid">
-      <div class="card service-card">
-        <i class="fas fa-shield-alt card-icon" aria-hidden="true"></i>
-        <h3>Zprostředkování pojištění</h3>
-        <p>Návrhy rizikových i životních pojistných plánů pro jednotlivce i rodiny.</p>
-        <p><a class="inline-link" href="zivotni-pojisteni.html">→ Kalkulačka životního pojištění</a></p>
-      </div>
-
-      <div class="card service-card">
-        <i class="fas fa-home card-icon" aria-hidden="true"></i>
-        <h3>Úvěrové poradenství</h3>
-        <p>Od jednoduchých případů po složité úvěrové strategie.</p>
-        <p><a class="inline-link" href="hypoteka.html">→ Kalkulačka hypotéky</a></p>
-      </div>
-
-      <div class="card service-card">
-        <i class="fas fa-chart-line card-icon" aria-hidden="true"></i>
-        <h3>Správa majetku a investice</h3>
-        <p>Pro investory, kteří chtějí majetek chránit, rozmnožit nebo začít budovat.</p>
-        <p><a class="inline-link" href="investice.html">→ Investiční kalkulačka</a></p>
-      </div>
-    </div>
-
-    <div class="center" style="margin-top:18px;">
-      <a href="rezervace.html" class="btn primary">Rezervace</a>
-      <a href="#kontakt" class="btn secondary">Konzultace</a>
-    </div>
-  </section>
-
-  <!-- ZKUŠENOSTI -->
-  <section class="section section-dark fade-in" id="zkusenosti">
-    <h2>Zkušenosti</h2>
-    <div class="stats-grid">
-      <div class="stat-item">
-        <i class="fas fa-users" aria-hidden="true"></i>
-        <div class="counter stat-number" data-target="250" data-suffix="+">0</div>
-        <p class="stat-label">Spokojených klientů</p>
-      </div>
-      <div class="stat-item">
-        <i class="fas fa-hand-holding-usd" aria-hidden="true"></i>
-        <div class="counter stat-number" data-target="50" data-suffix=" mil.">0</div>
-        <p class="stat-label">Sjednaných úvěrů</p>
-      </div>
-      <div class="stat-item">
-        <i class="fas fa-piggy-bank" aria-hidden="true"></i>
-        <div class="counter stat-number" data-target="10" data-suffix=" mil.">0</div>
-        <p class="stat-label">Spravovaných investic</p>
-      </div>
-      <div class="stat-item">
-        <i class="fas fa-briefcase" aria-hidden="true"></i>
-        <div class="counter stat-number" data-target="8" data-suffix=" let">0</div>
-        <p class="stat-label">Let praxe</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- REFERENCE -->
-  <section class=”section fade-in” id=”reference”>
-    <h2>Reference klientů</h2>
-    <p>Co o spolupráci říkají lidé, kterým pomáhám.</p>
-    <div class=”cards-grid”>
-      <div class=”card”>
-        <div class=”testimonial-stars” aria-label=”5 z 5 hvězdiček”>
-          <i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i>
+      <div class="cert-grid">
+        <div class="cert-card fade-in">
+          <i class="fas fa-landmark"></i>
+          <h4>Registrace ČNB</h4>
+          <p>Vázaný zástupce registrovaný Českou národní bankou</p>
         </div>
-        <p class=”testimonial-quote”>Profesionální přístup, jasné vysvětlení a strategie, která dává smysl. Doporučuji každému.</p>
-        <div class=”testimonial-author”>
-          <strong>Jan Novák</strong>
-          <span>klient od 2022 – investice</span>
+        <div class="cert-card fade-in">
+          <i class="fas fa-building-columns"></i>
+          <h4>edofinance</h4>
+          <p>Člen sítě edofinance — přístup k&nbsp;produktům desítek poskytovatelů</p>
+        </div>
+        <div class="cert-card fade-in">
+          <i class="fas fa-graduation-cap"></i>
+          <h4>IDD certifikace</h4>
+          <p>Splňuji požadavky směrnice o distribuci pojištění</p>
+        </div>
+        <div class="cert-card fade-in">
+          <i class="fas fa-award"></i>
+          <h4>8 let praxe</h4>
+          <p>Zkušenosti od roku 2018 v oblasti financí a poradenství</p>
         </div>
       </div>
-      <div class=”card”>
-        <div class=”testimonial-stars” aria-label=”5 z 5 hvězdiček”>
-          <i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i>
-        </div>
-        <p class=”testimonial-quote”>Díky Stanislavovi jsem získala hypotéku, kterou mi jinde zamítli. Skvělá práce.</p>
-        <div class=”testimonial-author”>
-          <strong>Petra K.</strong>
-          <span>klientka od 2023 – hypotéka</span>
-        </div>
-      </div>
-      <div class=”card”>
-        <div class=”testimonial-stars” aria-label=”5 z 5 hvězdiček”>
-          <i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i><i class=”fas fa-star”></i>
-        </div>
-        <p class=”testimonial-quote”>Pomohl mi nastavit investice tak, abych konečně věděl, co dělám. Maximální spokojenost.</p>
-        <div class=”testimonial-author”>
-          <strong>Martin S.</strong>
-          <span>klient od 2021 – správa majetku</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- FAQ -->
-  <section class="section fade-in" id="faq">
-    <h2>Často kladené dotazy</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <h3>Kolik stojí první konzultace?</h3>
-        <p>První konzultace je zdarma. Slouží k tomu, abych pochopil vaši situaci a navrhl další postup.</p>
-      </div>
-      <div class="card">
-        <h3>Musím si sjednat produkt?</h3>
-        <p>Ne. Zaměřuji se na strategii, ne na prodej. Produkty doporučuji jen tam, kde dávají smysl.</p>
-      </div>
-      <div class="card">
-        <h3>Jak probíhá spolupráce?</h3>
-        <p>Nejprve analýza, poté návrh řešení a následně dlouhodobá správa a podpora.</p>
-      </div>
+  <section class="section" id="faq">
+    <div class="section-center fade-in">
+      <p class="section-sub" style="margin-bottom:8px">Časté dotazy</p>
+      <h2 class="section-title">Odpovědi na vaše <span class="gold">otázky</span></h2>
     </div>
-  </section>
-
-  <!-- TIMELINE -->
-  <section class="section fade-in" id="timeline">
-    <h2>Můj profesní příběh</h2>
-    <div class="cards-grid">
-      <div class="card"><h3>2018</h3><p>Začátek kariéry ve financích.</p></div>
-      <div class="card"><h3>2019</h3><p>Specializace na problematiku pojištění pro retailového klienta.</p></div>
-      <div class="card"><h3>2022</h3><p>Rozšíření o úvěrové a investiční poradenství.</p></div>
-      <div class="card"><h3>2023</h3><p>Tvoření poradenského systému založeného na transparentnosti.</p></div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section class="section fade-in" id="blog">
-    <h2>Blog</h2>
-    <p>Praktické rady, tipy a novinky ze světa financí.</p>
-    <div class="cards-grid">
-      <div class="card">
-        <h3>Jak si správně nastavit investice</h3>
-        <p>Jednoduchý návod, jak začít investovat bez stresu a chyb.</p>
-        <a href="#" class="btn secondary">Číst více</a>
+    <div class="faq-list">
+      <div class="faq-item fade-in">
+        <button class="faq-question">Kolik stojí konzultace?<span></span></button>
+        <div class="faq-answer">Úvodní konzultace je zcela zdarma a nezávazná. Mou odměnu hradí finanční instituce, jejichž produkty zprostředkovávám — vy jako klient neplatíte nic navíc.</div>
       </div>
-      <div class="card">
-        <h3>5 nejčastějších chyb u hypoték</h3>
-        <p>Vyhněte se problémům, které stojí klienty stovky tisíc.</p>
-        <a href="hypoteka.html" class="btn secondary">Číst více</a>
+      <div class="faq-item fade-in">
+        <button class="faq-question">Jak probíhá spolupráce?<span></span></button>
+        <div class="faq-answer">Nejprve si probereme vaši finanční situaci a cíle. Poté připravím porovnání nabídek od různých poskytovatelů a doporučím optimální řešení. Po vašem souhlasu zařídím veškerou administrativu. Celý proces je transparentní a bez tlaku.</div>
       </div>
-      <div class="card">
-        <h3>Proč je pojištění důležitější, než si myslíte</h3>
-        <p>Ochrana majetku i rodiny je základ finanční stability.</p>
-        <a href="#" class="btn secondary">Číst více</a>
+      <div class="faq-item fade-in">
+        <button class="faq-question">Jste opravdu nezávislý?<span></span></button>
+        <div class="faq-answer">Ano. Jako vázaný zástupce edofinance mám přístup k produktům od desítek bank a pojišťoven. Nejsem vázán na jednoho poskytovatele, takže vždy hledám řešení, které je nejlepší pro vás.</div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">Mohu se na vás obrátit i s refinancováním?<span></span></button>
+        <div class="faq-answer">Rozhodně. Refinancování hypotéky je jednou z nejčastějších služeb, které poskytuji. Porovnám aktuální nabídky s vaší stávající smlouvou a zjistím, zda se přechod vyplatí.</div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-question">Jak dlouho trvá vyřízení hypotéky?<span></span></button>
+        <div class="faq-answer">Standardně 4–6 týdnů od podání žádosti. Závisí to na konkrétní bance a složitosti případu. Díky zkušenostem dokážu proces výrazně urychlit a vyhnout se zbytečným průtahům.</div>
       </div>
     </div>
   </section>
 
   <!-- KONTAKT -->
-  <section class="section fade-in" id="kontakt">
-    <h2>Kontakt</h2>
-    <p>Jsem vám k dispozici pro osobní i online konzultaci.</p>
+  <div class="section-alt">
+    <section class="section" id="kontakt">
+      <div class="section-center fade-in">
+        <p class="section-sub" style="margin-bottom:8px">Ozvěte se</p>
+        <h2 class="section-title">Domluvme si <span class="gold">konzultaci</span></h2>
+        <p class="section-sub">Napište mi nebo zavolejte. Úvodní konzultace je zdarma a nezávazná.</p>
+      </div>
+      <div class="contact-grid fade-in">
+        <div class="contact-info">
+          <h3>Kontaktní údaje</h3>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+420601383910">+420 601 383 910</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/420601383910">WhatsApp</a>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <a href="#">LinkedIn profil</a>
+          </div>
+          <div class="urgency">
+            <i class="fas fa-clock"></i> Volná místa tento měsíc: <strong id="slotsLeft">3</strong>
+          </div>
+        </div>
+        <form class="v2-form" id="contactForm" action="https://formspree.io/f/tvuj-kod" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c_first">Jméno</label>
+              <input type="text" id="c_first" name="first_name" required>
+            </div>
+            <div class="form-group">
+              <label for="c_last">Příjmení</label>
+              <input type="text" id="c_last" name="last_name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c_email">E-mail</label>
+            <input type="email" id="c_email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="c_phone">Telefon</label>
+            <input type="tel" id="c_phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="c_message">Zpráva</label>
+            <textarea id="c_message" name="message" placeholder="S čím vám mohu pomoci?"></textarea>
+          </div>
+          <div class="form-consent">
+            <input type="checkbox" id="c_gdpr" required>
+            <label for="c_gdpr">Souhlasím se <a href="GDPR.html" target="_blank">zpracováním osobních údajů</a></label>
+          </div>
+          <button type="submit" class="form-submit">Odeslat zprávu <i class="fas fa-paper-plane"></i></button>
+          <div class="form-status" id="contactStatus"></div>
+        </form>
+      </div>
+    </section>
+  </div>
 
-    <div class="contact-grid">
-      <div class="contact-item">
-        <i class="fas fa-phone" aria-hidden="true"></i>
-        <div class="contact-label">Telefon</div>
-        <a href="tel:+420601383910">+420 601 383 910</a>
-      </div>
-      <div class="contact-item">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-        <div class="contact-label">WhatsApp</div>
-        <a href="https://wa.me/420601383910" target="_blank" rel="noopener">Napište mi</a>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-envelope" aria-hidden="true"></i>
-        <div class="contact-label">E-mail</div>
-        <a href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a>
-      </div>
-      <div class="contact-item">
-        <i class="fab fa-linkedin" aria-hidden="true"></i>
-        <div class="contact-label">LinkedIn</div>
-        <a href="https://www.linkedin.com/in/stanislav-kupilik-918690198/" target="_blank" rel="noopener">Propojit se</a>
-      </div>
-    </div>
-
-    <div class="center" style="margin-top:18px;">
-      <a href="rezervace.html" class="btn primary">Rezervovat schůzku</a>
-    </div>
-  </section>
-
-  <!-- FORM -->
-  <section class="section fade-in" id="formular">
-    <h2>Napište mi zprávu</h2>
-    <p>Máte dotaz? Zanechte mi vzkaz a já se vám ozvu zpět.</p>
-
-    <!-- Nahraď tvuj-kod svým Formspree ID -->
-    <form class="contact-form" action="https://formspree.io/f/tvuj-kod" method="POST">
-      <div class="form-group">
-        <label>Jméno</label>
-        <input type="text" name="first_name" required />
-      </div>
-      <div class="form-group">
-        <label>Příjmení</label>
-        <input type="text" name="last_name" required />
-      </div>
-      <div class="form-group full-width">
-        <label>E-mail</label>
-        <input type="email" name="email" required />
-      </div>
-      <div class="form-group full-width">
-        <label>Zpráva</label>
-        <textarea name="message" rows="5" required></textarea>
-      </div>
-      <p class="form-note">
-        Odesláním formuláře souhlasíte se zpracováním osobních údajů dle
-        <a href="gdpr.html">zásad ochrany osobních údajů</a>.
-      </p>
-      <button type="submit" class="btn primary full-width">Odeslat zprávu</button>
-    </form>
-  </section>
-
-  <!-- FOOTER (doplněné odkazy) -->
+  <!-- FOOTER -->
   <footer class="footer">
-    © 2026 Stanislav Kupilík – Finanční poradenství •
-    <a href="rezervace.html">Rezervace</a> •
-    <a href="povinne-informace.html">Povinné informace</a> •
-    <a href="informace-pro-investory.html">Investoři</a> •
-    <a href="gdpr.html">GDPR</a> •
-    <a href="cookies.html">Cookies</a>
+    <div class="footer-links">
+      <a href="povinne-informace.html">Povinné informace</a>
+      <a href="informace-pro-investory.html">Pro investory</a>
+      <a href="GDPR.html">Ochrana osobních údajů</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="rezervace.html">Rezervace</a>
+    </div>
+    <p>&copy; 2025 Stanislav Kupilík. Všechna práva vyhrazena.</p>
   </footer>
 
-  <a href="rezervace.html" class="floating-cta btn primary" id="floatingCta">
-    <i class="fas fa-calendar-check" aria-hidden="true"></i> Konzultace zdarma
+  <!-- FLOATING CTA -->
+  <a href="#kontakt" class="floating-cta" id="floatingCta">
+    <i class="fas fa-calendar-check"></i> Konzultace zdarma
   </a>
 
   <script src="script.js"></script>
+  <script src="script-v2.js"></script>
 </body>
 </html>

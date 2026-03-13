@@ -1,113 +1,115 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ochrana osobních údajů (GDPR) | Stanislav Kupilík</title>
-  <meta name="description" content="Zásady zpracování osobních údajů a informace o ochraně soukromí." />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ochrana osobních údajů (GDPR) — Stanislav Kupilík</title>
+  <meta name="description" content="Zásady zpracování osobních údajů a informace o ochraně soukromí.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-  <!-- NAV (stejné ID a struktura jako na [index.html](https://onedrive.live.com?cid=BA5F4914552A43B8&id=BA5F4914552A43B8!s93dae86c11ec476eba1bb82c0651fbad&EntityRepresentationId=fbb747c6-f4b4-4ba7-ba40-0677afb3b9c2)) -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo">Stanislav Kupilík</div>
-      <button class="hamburger" id="hamburger" aria-label="Otevřít menu">
-        <i class="fas fa-bars" aria-hidden="true"></i>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Stanislav <span>Kupilík</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#o-mne">O mně</a></li>
+        <li><a href="index.html#sluzby">Služby</a></li>
+        <li><a href="index.html#kalkulacky">Kalkulačky</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="index.html#kontakt" class="nav-cta">Konzultace zdarma</a></li>
+        <li><button class="dark-toggle" id="darkToggle" aria-label="Přepnout režim">🌙</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
       </button>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html#domu">Domů</a>
-        <a href="hypoteka.html">Hypotéky</a>
-        <a href="investice.html">Investice</a>
-        <a href="zivotni-pojisteni.html">Životko</a>
-        <a href="index.html#kontakt">Kontakt</a>
-        <button id="darkToggle" aria-label="Přepnout tmavý režim">🌙</button>
-      </div>
     </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
   </nav>
 
-  <section class="section fade-in" id="top">
+  <div class="calc-page-hero">
     <h1>Ochrana osobních údajů (GDPR)</h1>
-    <p class="muted">Tento dokument popisuje, jak zpracovávám osobní údaje návštěvníků webu a klientů v rámci poptávky a poskytování služeb.</p>
-  </section>
+    <p>Zásady zpracování osobních údajů návštěvníků webu a klientů.</p>
+  </div>
 
-  <section class="section fade-in" id="obsah" style="text-align:left;">
-    <div class="card">
-      <h2>1) Kdo je správcem osobních údajů</h2>
+  <div class="calc-container" style="margin-bottom:80px">
+    <div class="calc-card" style="text-align:left">
+
+      <h2 style="margin-bottom:12px">1) Kdo je správcem osobních údajů</h2>
       <p><strong>Správce:</strong> Stanislav Kupilík</p>
-      <p><strong>E-mail:</strong> <a class="inline-link" href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a></p>
-      <p><strong>Telefon:</strong> <a class="inline-link" href="tel:+420601383910">+420 601 383 910</a></p>
-      <p><strong>IČO / sídlo:</strong> DOPLŇTE (pokud podnikáte jako OSVČ nebo firma)</p>
-    </div>
+      <p><strong>E-mail:</strong> <a href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a></p>
+      <p><strong>Telefon:</strong> <a href="tel:+420601383910">+420 601 383 910</a></p>
+      <p style="color:var(--text-muted)"><strong>IČO / sídlo:</strong> DOPLŇTE</p>
 
-    <div class="card" style="margin-top:20px;">
-      <h2>2) Jaké údaje zpracovávám</h2>
-      <ul>
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">2) Jaké údaje zpracovávám</h2>
+      <ul style="color:var(--text-muted);padding-left:20px">
         <li>Kontaktní údaje: jméno, e-mail, telefon.</li>
-        <li>Obsah zprávy / poptávky, případně parametry z kalkulaček (pokud je odešlete).</li>
-        <li>Technické údaje: běžné logy serveru (IP adresa, user-agent) a případně cookies (viz stránka Cookies).</li>
+        <li>Obsah zprávy / poptávky, případně parametry z kalkulaček.</li>
+        <li>Technické údaje: běžné logy serveru (IP adresa, user-agent) a případně cookies.</li>
       </ul>
-    </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h2>3) Účely a právní základy zpracování</h2>
-      <ul>
-        <li><strong>Odpověď na poptávku a komunikace</strong> – zpracování nezbytné pro jednání o smlouvě / poskytnutí služby.</li>
-        <li><strong>Rezervace schůzky</strong> (pokud používáte rezervační systém) – zpracování nezbytné pro sjednání a realizaci schůzky.</li>
-        <li><strong>Marketing / newsletter</strong> – pouze pokud k tomu dáte samostatný souhlas (pokud zavedete).</li>
-        <li><strong>Analytika a měření</strong> – pouze dle nastavení cookies souhlasu (pokud zavedete analytické nástroje).</li>
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">3) Účely a právní základy zpracování</h2>
+      <ul style="color:var(--text-muted);padding-left:20px">
+        <li><strong style="color:var(--text)">Odpověď na poptávku a komunikace</strong> — zpracování nezbytné pro jednání o smlouvě / poskytnutí služby.</li>
+        <li><strong style="color:var(--text)">Rezervace schůzky</strong> — zpracování nezbytné pro sjednání a realizaci schůzky.</li>
+        <li><strong style="color:var(--text)">Marketing / newsletter</strong> — pouze pokud k tomu dáte samostatný souhlas.</li>
+        <li><strong style="color:var(--text)">Analytika a měření</strong> — pouze dle nastavení cookies souhlasu.</li>
       </ul>
-      <p class="muted">Pozn.: Konkrétní právní základ závisí na tom, jaký formulář vyplníte a co požadujete.</p>
-    </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h2>4) Příjemci / zpracovatelé</h2>
-      <p>Vaše údaje mohu sdílet pouze s ověřenými poskytovateli služeb, které potřebuji k provozu webu a komunikaci.</p>
-      <ul>
-        <li><strong>Hosting / správce webu:</strong> DOPLŇTE</li>
-        <li><strong>Formuláře:</strong> DOPLŇTE (např. Formspree – pokud používáte pro odesílání formulářů)</li>
-        <li><strong>Rezervace schůzek:</strong> DOPLŇTE (např. Microsoft Bookings / Calendly – pokud používáte)</li>
-        <li><strong>E-mailová služba:</strong> DOPLŇTE (pokud máte zvláštní poskytovatele)</li>
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">4) Příjemci / zpracovatelé</h2>
+      <p style="color:var(--text-muted)">Vaše údaje mohu sdílet pouze s ověřenými poskytovateli služeb nezbytných k provozu webu a komunikaci.</p>
+      <ul style="color:var(--text-muted);padding-left:20px">
+        <li><strong style="color:var(--text)">Hosting / správce webu:</strong> DOPLŇTE</li>
+        <li><strong style="color:var(--text)">Formuláře:</strong> DOPLŇTE</li>
+        <li><strong style="color:var(--text)">Rezervace schůzek:</strong> DOPLŇTE</li>
+        <li><strong style="color:var(--text)">E-mailová služba:</strong> DOPLŇTE</li>
       </ul>
-    </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h2>5) Doba uchování</h2>
-      <ul>
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">5) Doba uchování</h2>
+      <ul style="color:var(--text-muted);padding-left:20px">
         <li>Poptávky a komunikaci uchovávám po dobu nezbytnou k vyřízení a následné spolupráci.</li>
         <li>Účetní a smluvní dokumenty uchovávám dle právních povinností.</li>
-        <li>Marketingové souhlasy (pokud zavedete) do odvolání souhlasu nebo po dobu uvedenou u souhlasu.</li>
+        <li>Marketingové souhlasy do odvolání souhlasu nebo po dobu uvedenou u souhlasu.</li>
       </ul>
-    </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h2>6) Vaše práva</h2>
-      <ul>
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">6) Vaše práva</h2>
+      <ul style="color:var(--text-muted);padding-left:20px">
         <li>Právo na přístup k údajům, opravu, výmaz, omezení zpracování.</li>
-        <li>Právo vznést námitku a právo na přenositelnost (pokud se uplatní).</li>
-        <li>Právo kdykoli odvolat souhlas (pokud zpracování stojí na souhlasu).</li>
+        <li>Právo vznést námitku a právo na přenositelnost.</li>
+        <li>Právo kdykoli odvolat souhlas.</li>
         <li>Právo podat stížnost u dozorového úřadu (ÚOOÚ).</li>
       </ul>
-    </div>
 
-    <div class="card" style="margin-top:20px;">
-      <h2>7) Kontakt</h2>
-      <p>Pro uplatnění práv nebo dotazy mi napište na <a class="inline-link" href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a>.</p>
+      <hr style="border:none;border-top:1px solid var(--glass-border);margin:28px 0">
+
+      <h2 style="margin-bottom:12px">7) Kontakt</h2>
+      <p style="color:var(--text-muted)">Pro uplatnění práv nebo dotazy mi napište na <a href="mailto:stanislav.kupilik@edofinance.cz">stanislav.kupilik@edofinance.cz</a>.</p>
+
     </div>
-  </section>
+  </div>
 
   <footer class="footer">
-    © 2026 Stanislav Kupilík •
-    <a class="inline-link" href="gdpr.html">GDPR</a> •
-    <a class="inline-link" href="cookies.html">Cookies</a> •
-    <a class="inline-link" href="povinne-informace.html">Povinné informace</a> •
-    <a class="inline-link" href="informace-pro-investory.html">Informace pro investory</a>
+    <div class="footer-links">
+      <a href="index.html">Hlavní stránka</a>
+      <a href="povinne-informace.html">Povinné informace</a>
+      <a href="informace-pro-investory.html">Pro investory</a>
+      <a href="cookies.html">Cookies</a>
+    </div>
+    <p>&copy; 2025 Stanislav Kupilík. Všechna práva vyhrazena.</p>
   </footer>
 
   <script src="script.js"></script>
+  <script src="script-v2.js"></script>
 </body>
 </html>
