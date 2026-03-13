@@ -85,6 +85,95 @@
     obs.observe(hero);
   }
 
+  /* --- Certificate lightbox gallery --- */
+  var CERT_GALLERY = [
+    { src: 'img/certs/cert-kapitalovy-trh.jpg', title: 'Kapitálový trh', desc: 'z. 256/2004 Sb.', type: 'image' },
+    { src: 'img/certs/cert-spotrebitelsky-uver.jpg', title: 'Spotřebitelský úvěr', desc: 'z. 257/2016 Sb.', type: 'image' },
+    { src: 'img/certs/cert-penzijni-sporeni.jpg', title: 'Penzijní spoření', desc: 'z. 427/2011 Sb.', type: 'image' },
+    { src: 'img/certs/cert-distribuce-pojisteni.pdf', title: 'Distribuce pojištění', desc: 'PDF ke stažení', type: 'pdf' }
+  ];
+
+  var certIndex = 0;
+  var certOverlay, certBox, certMedia, certCaption, certCounter;
+
+  function buildCertLightbox() {
+    certOverlay = document.createElement('div');
+    certOverlay.className = 'cert-lightbox-overlay';
+    document.body.appendChild(certOverlay);
+
+    certBox = document.createElement('div');
+    certBox.className = 'cert-lightbox';
+    certBox.innerHTML =
+      '<button class="cert-lightbox-close" aria-label="Zavřít">&times;</button>' +
+      '<div class="cert-lightbox-media"></div>' +
+      '<div class="cert-lightbox-footer">' +
+        '<button class="cert-lightbox-nav" id="certPrev" aria-label="Předchozí"><i class="fas fa-chevron-left"></i></button>' +
+        '<div class="cert-lightbox-caption"></div>' +
+        '<button class="cert-lightbox-nav" id="certNext" aria-label="Další"><i class="fas fa-chevron-right"></i></button>' +
+      '</div>' +
+      '<div class="cert-lightbox-counter"></div>';
+    document.body.appendChild(certBox);
+
+    certMedia = certBox.querySelector('.cert-lightbox-media');
+    certCaption = certBox.querySelector('.cert-lightbox-caption');
+    certCounter = certBox.querySelector('.cert-lightbox-counter');
+
+    certBox.querySelector('.cert-lightbox-close').addEventListener('click', closeCertLightbox);
+    certOverlay.addEventListener('click', closeCertLightbox);
+    document.getElementById('certPrev').addEventListener('click', function () { showCert(certIndex - 1); });
+    document.getElementById('certNext').addEventListener('click', function () { showCert(certIndex + 1); });
+  }
+
+  function showCert(i) {
+    if (i < 0) i = CERT_GALLERY.length - 1;
+    if (i >= CERT_GALLERY.length) i = 0;
+    certIndex = i;
+    var item = CERT_GALLERY[i];
+
+    if (item.type === 'pdf') {
+      certMedia.innerHTML =
+        '<div class="cert-lightbox-pdf">' +
+          '<i class="fas fa-file-pdf"></i>' +
+          '<strong>' + item.title + '</strong>' +
+          '<p style="color:var(--text-muted);font-size:0.9rem">Osvědčení o odborné zkoušce</p>' +
+          '<a href="' + item.src + '" target="_blank" rel="noopener"><i class="fas fa-download"></i> Stáhnout PDF</a>' +
+        '</div>';
+    } else {
+      certMedia.innerHTML = '<img src="' + item.src + '" alt="Certifikát – ' + item.title + '" loading="lazy">';
+    }
+    certCaption.innerHTML = '<strong>' + item.title + '</strong><span>' + item.desc + '</span>';
+    certCounter.textContent = (i + 1) + ' / ' + CERT_GALLERY.length;
+  }
+
+  function openCertLightbox() {
+    if (!certOverlay) buildCertLightbox();
+    showCert(0);
+    certOverlay.classList.add('visible');
+    certBox.classList.add('visible');
+    document.body.classList.add('no-scroll');
+  }
+
+  function closeCertLightbox() {
+    certOverlay.classList.remove('visible');
+    certBox.classList.remove('visible');
+    document.body.classList.remove('no-scroll');
+  }
+
+  var galleryBtn = document.getElementById('certGalleryBtn');
+  if (galleryBtn) {
+    galleryBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openCertLightbox();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (!certBox || !certBox.classList.contains('visible')) return;
+    if (e.key === 'Escape') closeCertLightbox();
+    if (e.key === 'ArrowLeft') showCert(certIndex - 1);
+    if (e.key === 'ArrowRight') showCert(certIndex + 1);
+  });
+
   /* --- Contact form submission (v2 page) --- */
   const contactForm = document.getElementById('contactForm');
   const contactStatus = document.getElementById('contactStatus');

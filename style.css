@@ -660,6 +660,186 @@ img.testimonial-avatar {
   color: var(--text-muted);
   font-size: 0.82rem;
 }
+.cert-verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--gold);
+}
+.cert-verify-link:hover { gap: 10px; }
+
+/* --- Trust strip --- */
+.calc-trust-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--glass-border);
+}
+.calc-trust-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.calc-trust-strip i { color: var(--gold); font-size: 0.85rem; }
+
+/* --- Certificate lightbox --- */
+.cert-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1999;
+  background: rgba(0,0,0,.7);
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+.cert-lightbox-overlay.visible { opacity: 1; pointer-events: auto; }
+
+.cert-lightbox {
+  position: fixed;
+  z-index: 2000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(.92);
+  width: calc(100% - 48px);
+  max-width: 800px;
+  max-height: 90vh;
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cert-lightbox.visible {
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+  pointer-events: auto;
+}
+body.light .cert-lightbox {
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 20px 60px rgba(15,23,42,.18);
+}
+.cert-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color var(--transition);
+  z-index: 1;
+}
+.cert-lightbox-close:hover { color: var(--gold); }
+.cert-lightbox-media {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+.cert-lightbox-media img {
+  max-width: 100%;
+  max-height: 65vh;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+.cert-lightbox-pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 20px;
+  text-align: center;
+}
+.cert-lightbox-pdf i { font-size: 3rem; color: var(--gold); }
+.cert-lightbox-pdf a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--navy);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.cert-lightbox-pdf a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,168,67,.3);
+  color: var(--navy);
+}
+.cert-lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  width: 100%;
+}
+.cert-lightbox-nav {
+  background: none;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.cert-lightbox-nav:hover { border-color: var(--gold); color: var(--gold); }
+.cert-lightbox-caption {
+  text-align: center;
+  min-width: 140px;
+}
+.cert-lightbox-caption strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+.cert-lightbox-caption span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.cert-lightbox-counter {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .cert-lightbox {
+    width: calc(100% - 24px);
+    padding: 16px;
+    max-height: 85vh;
+  }
+  .cert-lightbox-media img { max-height: 50vh; }
+  .calc-trust-strip { gap: 12px; font-size: 0.7rem; }
+}
 
 /* ===== FAQ ===== */
 .faq-list {
