@@ -841,6 +841,84 @@ body.light .cert-lightbox {
   .calc-trust-strip { gap: 12px; font-size: 0.7rem; }
 }
 
+/* ===== COMPARE (Proč nezávislý poradce) ===== */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.compare-col {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+}
+.compare-col.compare-highlight {
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 0 24px rgba(212,168,67,0.08);
+}
+.compare-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 24px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+.compare-header i {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+.compare-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.compare-row:last-child {
+  border-bottom: none;
+}
+.compare-label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.compare-value {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.compare-value i {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.compare-check {
+  color: var(--gold);
+}
+.compare-cross {
+  color: #EF4444;
+  opacity: 0.7;
+}
+.compare-neutral {
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== FAQ ===== */
 .faq-list {
   max-width: 720px;
