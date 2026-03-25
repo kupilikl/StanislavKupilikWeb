@@ -246,7 +246,7 @@
     }
 
     var chartsContainer = document.getElementById('mortgageCharts');
-    if (chartsContainer) chartsContainer.style.display = '';
+    if (chartsContainer) chartsContainer.style.display = 'block';
   }
 
   // ===== INVEST CHARTS =====
@@ -357,7 +357,7 @@
     }
 
     var chartsContainer = document.getElementById('investCharts');
-    if (chartsContainer) chartsContainer.style.display = '';
+    if (chartsContainer) chartsContainer.style.display = 'block';
   }
 
   // ===== LIFE INSURANCE CHARTS =====
@@ -476,7 +476,7 @@
     }
 
     var chartsContainer = document.getElementById('lifeCharts');
-    if (chartsContainer) chartsContainer.style.display = '';
+    if (chartsContainer) chartsContainer.style.display = 'block';
   }
 
   // ===== Event listeners =====
