@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const parseNum = (el) =>
     parseFloat(String(el.value || "0").replace(/\s/g, "").replace(",", ".")) || 0;
 
-  const showEl = (id) => { const e = document.getElementById(id); if (e) e.style.display = ""; };
+  const showEl = (id) => { const e = document.getElementById(id); if (e) e.style.display = "block"; };
   const hideEl = (id) => { const e = document.getElementById(id); if (e) e.style.display = "none"; };
 
   const isPlaceholder = (form) => {
