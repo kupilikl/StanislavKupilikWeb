@@ -471,6 +471,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ===== Contact form → Telegram =====
+  const contactForm = $("#contactForm");
+  if (contactForm) {
+    const TG_TOKEN = "8603013189:AAEpDQVafSU3LW5Q5HoTubZgvKtCYoCFCAw";
+    const TG_CHAT = "5000516410";
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const honey = contactForm.querySelector('[name="_honey"]');
+      if (honey && honey.value) return;
+
+      const btn = contactForm.querySelector('button[type="submit"]');
+      const status = $("#contactStatus");
+      const origText = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = "Odesílám…";
+      if (status) status.textContent = "";
+
+      const name = $("#c_first").value + " " + $("#c_last").value;
+      const email = $("#c_email").value;
+      const phone = $("#c_phone").value || "neuvedeno";
+      const message = $("#c_message").value || "bez zprávy";
+
+      const text = `📩 Nová zpráva z webu\n\n👤 ${name}\n📧 ${email}\n📱 ${phone}\n\n💬 ${message}`;
+
+      try {
+        const resp = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: "HTML" }),
+        });
+        if (!resp.ok) throw new Error();
+        contactForm.reset();
+        if (status) {
+          status.textContent = "✓ Zpráva odeslána! Ozvu se vám co nejdříve.";
+          status.style.color = "var(--primary)";
+        }
+      } catch {
+        if (status) {
+          status.textContent = "Nepodařilo se odeslat. Zkuste to znovu nebo zavolejte.";
+          status.style.color = "#e74c3c";
+        }
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = origText;
+      }
+    });
+  }
+
   // ===== Floating CTA =====
   const floatingCta = $("#floatingCta");
   if (floatingCta) {
