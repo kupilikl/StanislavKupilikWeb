@@ -155,11 +155,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const hideEl = (id) => { const e = document.getElementById(id); if (e) e.style.display = "none"; };
 
   const isPlaceholder = (form) => {
-    const action = form ? form.getAttribute("action") : "";
-    return !action || action.includes("tvuj-kod");
+    return !form;
   };
 
-  const submitLead = async (form, statusId) => {
+  const TG_TOKEN = "8603013189:AAEpDQVafSU3LW5Q5HoTubZgvKtCYoCFCAw";
+  const TG_CHAT = "5000516410";
+
+  const sendToTelegram = async (text) => {
+    const resp = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: TG_CHAT, text }),
+    });
+    if (!resp.ok) throw new Error();
+  };
+
+  const submitLead = async (form, statusId, tgMessage) => {
     const statusEl = document.getElementById(statusId);
     const btn = form.querySelector('button[type="submit"]');
     const origText = btn.textContent;
@@ -167,12 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.textContent = "Odes\u00edl\u00e1m\u2026";
     if (statusEl) statusEl.textContent = "";
     try {
-      const resp = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      });
-      if (!resp.ok) throw new Error();
+      await sendToTelegram(tgMessage);
       return true;
     } catch {
       if (statusEl) statusEl.textContent = "Nepoda\u0159ilo se odeslat. Zkuste to znovu.";
@@ -253,7 +259,11 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#m_h_totalPaid").value = czk(mData.totalPaid);
         $("#m_h_totalInterest").value = czk(mData.totalInterest);
         $("#m_h_summary").value = "Spl\u00e1tka: " + czk(mData.monthlyTotal) + ", \u00fav\u011br: " + czk(mData.P) + ", sazba: " + mData.annualRate + " %, doba: " + mData.years + " let";
-        const ok = await submitLead(gateForm, "mLeadStatus");
+        const name = $("#mName").value;
+        const email = $("#mEmail").value;
+        const phone = $("#mPhone").value || "neuvedeno";
+        const tgMsg = `Hypotecni kalkulacka\n\nKontakt: ${name}\nE-mail: ${email}\nTelefon: ${phone}\n\nParametry:\nUver: ${czk(mData.P)}\nSazba: ${mData.annualRate} %\nDoba: ${mData.years} let\nPoplatek: ${czk(mData.fee)}\n\nVysledek:\nSplatka: ${czk(mData.monthlyTotal)}/mes.\nCelkem zaplaceno: ${czk(mData.totalPaid)}\nCelkem na urocich: ${czk(mData.totalInterest)}`;
+        const ok = await submitLead(gateForm, "mLeadStatus", tgMsg);
         if (ok) showMortgageResult();
       });
     }
@@ -328,7 +338,11 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#i_h_contrib").value = czk(iData.contrib);
         $("#i_h_gain").value = czk(iData.gain);
         $("#i_h_summary").value = "Budouc\u00ed hodnota: " + czk(iData.fv) + ", vlo\u017eeno: " + czk(iData.contrib) + ", zisk: " + czk(iData.gain);
-        const ok = await submitLead(gateForm, "iLeadStatus");
+        const name = $("#iName").value;
+        const email = $("#iEmail").value;
+        const phone = $("#iPhone").value || "neuvedeno";
+        const tgMsg = `Investicni kalkulacka\n\nKontakt: ${name}\nE-mail: ${email}\nTelefon: ${phone}\n\nParametry:\nPocatecni investice: ${czk(iData.initial)}\nMesicni vklad: ${czk(iData.monthly)}\nZhodnoceni: ${iData.rate} % p.a.\nPoplatky: ${iData.fee} % p.a.\nDoba: ${iData.years} let\n\nVysledek:\nBudouci hodnota: ${czk(iData.fv)}\nVlozeno: ${czk(iData.contrib)}\nZisk: ${czk(iData.gain)}`;
+        const ok = await submitLead(gateForm, "iLeadStatus", tgMsg);
         if (ok) showInvestResult();
       });
     }
@@ -394,7 +408,11 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#l_h_funeral").value = czk(lData.funeral);
         $("#l_h_rec").value = czk(lData.recommended);
         $("#l_h_summary").value = "Doporu\u010den\u00e1 \u010d\u00e1stka: " + czk(lData.recommended);
-        const ok = await submitLead(gateForm, "lLeadStatus");
+        const name = $("#lName").value;
+        const email = $("#lEmail").value;
+        const phone = $("#lPhone").value || "neuvedeno";
+        const tgMsg = `Kalkulacka zivotniho pojisteni\n\nKontakt: ${name}\nE-mail: ${email}\nTelefon: ${phone}\n\nParametry:\nZavazky: ${czk(lData.debts)}\nMesicni prijem: ${czk(lData.income)}\nZajistit na: ${lData.years} let\nUspory: ${czk(lData.savings)}\nCile: ${czk(lData.goals)}\nPohrbu: ${czk(lData.funeral)}\n\nVysledek:\nDoporucena castka: ${czk(lData.recommended)}`;
+        const ok = await submitLead(gateForm, "lLeadStatus", tgMsg);
         if (ok) showLifeResult();
       });
     }
@@ -474,9 +492,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Contact form → Telegram =====
   const contactForm = $("#contactForm");
   if (contactForm) {
-    const TG_TOKEN = "8603013189:AAEpDQVafSU3LW5Q5HoTubZgvKtCYoCFCAw";
-    const TG_CHAT = "5000516410";
-
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const honey = contactForm.querySelector('[name="_honey"]');
@@ -486,31 +501,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const status = $("#contactStatus");
       const origText = btn.innerHTML;
       btn.disabled = true;
-      btn.textContent = "Odesílám…";
+      btn.textContent = "Odes\u00edl\u00e1m\u2026";
       if (status) status.textContent = "";
 
       const name = $("#c_first").value + " " + $("#c_last").value;
       const email = $("#c_email").value;
       const phone = $("#c_phone").value || "neuvedeno";
-      const message = $("#c_message").value || "bez zprávy";
+      const message = $("#c_message").value || "bez zpravy";
 
-      const text = `📩 Nová zpráva z webu\n\n👤 ${name}\n📧 ${email}\n📱 ${phone}\n\n💬 ${message}`;
+      const text = `Nova zprava z webu\n\nKontakt: ${name}\nE-mail: ${email}\nTelefon: ${phone}\n\nZprava: ${message}`;
 
       try {
-        const resp = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: "HTML" }),
-        });
-        if (!resp.ok) throw new Error();
+        await sendToTelegram(text);
         contactForm.reset();
         if (status) {
-          status.textContent = "✓ Zpráva odeslána! Ozvu se vám co nejdříve.";
+          status.textContent = "\u2713 Zpr\u00e1va odesl\u00e1na! Ozvu se v\u00e1m co nejd\u0159\u00edve.";
           status.style.color = "var(--primary)";
         }
       } catch {
         if (status) {
-          status.textContent = "Nepodařilo se odeslat. Zkuste to znovu nebo zavolejte.";
+          status.textContent = "Nepoda\u0159ilo se odeslat. Zkuste to znovu nebo zavolejte.";
           status.style.color = "#e74c3c";
         }
       } finally {
